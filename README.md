@@ -1,4 +1,4 @@
-\mainpage
+# GitHub Action for Doxygen and GitHub Pages {#mainpage}
 
 GitHub Action for generating and deploying Doxygen documentation to a GitHub pages branch.
 The action uses a docker container to run doxygen; the Dockerfile is also included in the repository.
@@ -32,7 +32,6 @@ jobs:
           doxyfile-path: doc/Doxyfile
           html-output-folder: doc/html
           branch: gh-pages
-          target-folder: /
 ```
 
 ## Action Inputs
@@ -51,7 +50,7 @@ The docker image is based on the archlinux image and contains doxygen and graphv
 Additionally, it contains latex for possibly generating PDFs in the future.
 It is located at [Docker Hub](https://ghcr.io/agarwalsaurav/doxygen-arch:latest).
 
-See the `docker` directory and its [documentation](manual_docker) for more details.
+See the `docker` directory and its [documentation](@ref manual_docker) for more details.
 
 ## License
 
