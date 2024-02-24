@@ -9,46 +9,42 @@ inputs:
   github_token:
     description: 'A GitHub token for pushing to the repo. Example: https://git.io/passing-token'
     required: true
+
+  working-directory:
+    description: 'Working directory'
+    required: true
+    default: '.'
+
+  doxyfile-path:
+    description: 'Path of the Doxygen configuration file'
+    required: true
+    default: './Doxyfile'
+
+  html-output-folder:
+    description: 'Folder (relative to working-directory) where Doxygen will generate the HTML build files.'
+    required: true
+    default: 'doc/html'
+
   branch:
     description: 'Branch name for pushing GitHub pages files'
     required: true
-    default: "gh-pages"
-  folder:
-    description: 'Folder where Doxygen will generate the HTML build files'
-    required: true
-    default: "docs/html"
-  config_file:
-    description: 'Path of the Doxygen configuration file'
-    required: true
-    default: "Doxyfile"
+    default: 'gh-pages'
+
   target_folder:
     description: 'Directory on the deployment branch for pushing the build files'
     required: false
 
 runs:
-  using: "composite"
+  using: 'composite'
   steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
-      with:
-        submodules: "true"
-
-    - name: Install Doxygen
-      run: sudo apt-get install wget graphviz -y && wget https://www.doxygen.nl/files/doxygen-1.10.0.linux.bin.tar.gz && tar -xf doxygen-1.10.0.linux.bin.tar.gz && cd doxygen-1.10.0 && sudo make install
+    - name: Run Doxygen Documentation Generation Container
       shell: bash
-
-    - name: Generate Doxygen Documentation
-      run: doxygen ${{ inputs.config_file }}
-      shell: bash
-      
-    - name: Create .nojekyll (ensures pages with underscores work on gh pages)
-      run: touch ${{ inputs.folder }}/.nojekyll
-      shell: bash
+      run: docker run --rm -v ${{ github.workspace }}/${{ inputs.working-directory }}:/workspace ghcr.io/agarwalsaurav/doxygen-arch:latest /workspace "${{ inputs.working-directory }}" "${{ inputs.doxyfile-path }}" "${{ inputs.html-output-folder }}"
 
     - name: Deploy to GitHub Pages
       uses: JamesIves/github-pages-deploy-action@v4.5.0
       with:
         token: ${{ inputs.github_token }}
         branch: ${{ inputs.branch }}
-        folder: ${{ inputs.folder }}
+        folder: ${{ inputs.working-directory }}/${{ inputs.html-output-folder }}
         target-folder: ${{ inputs.target_folder }}
