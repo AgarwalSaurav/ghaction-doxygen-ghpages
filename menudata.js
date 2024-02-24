@@ -24,4 +24,4 @@
 */
 var menudata={children:[
 {text:"Main Page",url:"index.html"},
-{text:"Docker",url:"manual_docker.html"}]}
+{text:"Docker",url:"@ref manual_docker"}]}

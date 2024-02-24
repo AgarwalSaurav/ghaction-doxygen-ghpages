@@ -74,12 +74,12 @@ $(function() {
   <div class="headertitle"><div class="title">Docker Image for Running Doxygen</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="md_docker_2manual__docker"></a> The image is based on the archlinux image and contains doxygen and graphviz. Additionally, it contains latex for possibly generating PDFs in the future.</p>
+<div class="textblock"><p><a class="anchor" id="autotoc_md4"></a> The image is based on the archlinux image and contains doxygen and graphviz. Additionally, it contains latex for possibly generating PDFs in the future.</p>
 <p>The image is available on <a href="https://ghcr.io/agarwalsaurav/doxygen-arch:latest">ghcr</a>.</p>
-<h1><a class="anchor" id="autotoc_md4"></a>
+<h1><a class="anchor" id="autotoc_md5"></a>
 Usage</h1>
 <p>Pull the image from <code>ghcr.io</code>: </p><div class="fragment"><div class="line">docker pull ghcr.io/agarwalsaurav/doxygen-arch:latest</div>
-</div><!-- fragment --><p>To run the image: </p><div class="fragment"><div class="line">docker run --rm -v &lt;local_dir&gt;:&lt;container_dir&gt; ghcr.io/agarwalsaurav/doxygen-arch:latest &lt;container_dir&gt;  &lt;working-directory&gt; &lt;doxyfile-path&gt; &lt;html-output-dir&gt;</div>
+</div><!-- fragment --><p>To run the image: </p><div class="fragment"><div class="line">docker run --rm -v &lt;local_dir&gt;:&lt;container_dir&gt; ghcr.io/agarwalsaurav/doxygen-arch:latest --workdir &lt;container_dir&gt; &lt;working-directory&gt; &lt;doxyfile-path&gt; &lt;html-output-dir&gt;</div>
 </div><!-- fragment --><p>For example: </p><div class="fragment"><div class="line">docker run --rm -v $(pwd):/work ghcr.io/agarwalsaurav/doxygen-arch:latest /work ./ doc/Doxyfile doc/html</div>
 </div><!-- fragment --><table class="markdownTable">
 <tr class="markdownTableHead">
@@ -95,7 +95,7 @@ Usage</h1>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone"><code>&lt;html-output-dir&gt;</code>   </td><td class="markdownTableBodyNone">The directory relative to the working directory where the HTML documentation will be generated.   </td></tr>
 </table>
-<h1><a class="anchor" id="autotoc_md5"></a>
+<h1><a class="anchor" id="autotoc_md6"></a>
 License</h1>
 <p>This work is under an <a href="https://github.com/AgarwalSaurav/ghaction-doxygen-ghpages/blob/main/LICENSE">MIT license</a>. </p>
 </div></div><!-- contents -->
