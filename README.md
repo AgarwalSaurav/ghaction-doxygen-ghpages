@@ -50,7 +50,7 @@ The docker image is based on the archlinux image and contains doxygen and graphv
 Additionally, it contains latex for possibly generating PDFs in the future.
 It is located at [ghcr.io](https://ghcr.io/agarwalsaurav/doxygen-arch:latest).
 
-See the `docker` directory and its [documentation](docker/manual_docker.md) for more details.
+See the `docker` directory and its [documentation](docker/docker_man.md) for more details.
 
 ## License
 
