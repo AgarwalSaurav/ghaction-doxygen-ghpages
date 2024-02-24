@@ -39,7 +39,14 @@ runs:
   steps:
     - name: Run Doxygen Documentation Generation Container
       shell: bash
-      run: docker run --rm -v ${{ github.workspace }}/${{ inputs.working-directory }}:/workspace ghcr.io/agarwalsaurav/doxygen-arch:latest /workspace "${{ inputs.working-directory }}" "${{ inputs.doxyfile-path }}" "${{ inputs.html-output-folder }}"
+      run: >
+        docker run --rm
+        --workdir ${{ github.workspace }}
+        --volume ${{ github.workspace }}:${{ github.workspace }}:rw
+        ghcr.io/agarwalsaurav/doxygen-arch:latest 
+        "${{ inputs.working-directory }}"
+        "${{ inputs.doxyfile-path }}"
+        "${{ inputs.html-output-folder }}"
 
     - name: Deploy to GitHub Pages
       uses: JamesIves/github-pages-deploy-action@v4.5.0

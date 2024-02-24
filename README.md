@@ -48,9 +48,9 @@ jobs:
 ## Docker image for running Doxygen
 The docker image is based on the archlinux image and contains doxygen and graphviz.
 Additionally, it contains latex for possibly generating PDFs in the future.
-It is located at [Docker Hub](https://ghcr.io/agarwalsaurav/doxygen-arch:latest).
+It is located at [ghcr.io](https://ghcr.io/agarwalsaurav/doxygen-arch:latest).
 
-See the `docker` directory and its [documentation](@ref manual_docker) for more details.
+See the `docker` directory and its [documentation](docker/manual_docker.md) for more details.
 
 ## License
 

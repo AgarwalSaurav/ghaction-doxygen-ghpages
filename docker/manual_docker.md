@@ -1,4 +1,4 @@
-# Docker Image for Running Doxygen {#manual_docker}
+# Docker Image for Running Doxygen
 
 The image is based on the archlinux image and contains doxygen and graphviz.
 Additionally, it contains latex for possibly generating PDFs in the future.
@@ -13,7 +13,7 @@ docker pull ghcr.io/agarwalsaurav/doxygen-arch:latest
 
 To run the image:
 ```bash
-docker run --rm -v <local_dir>:<container_dir> ghcr.io/agarwalsaurav/doxygen-arch:latest <container_dir>  <working-directory> <doxyfile-path> <html-output-dir>
+docker run --rm -v <local_dir>:<container_dir> ghcr.io/agarwalsaurav/doxygen-arch:latest --workdir <container_dir> <working-directory> <doxyfile-path> <html-output-dir>
 ```
 
 For example:
