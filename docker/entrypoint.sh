@@ -23,6 +23,6 @@ if [ ! -f ${doxyfile_path} ]; then
   exit 1
 fi
 
-doxygen ${doxyfile_path} > /dev/null
+GIT_TAG=$(git describe --tags --abbrev=0) doxygen ${doxyfile_path} > /dev/null
 
 touch ${html_output_folder}/.nojekyll
