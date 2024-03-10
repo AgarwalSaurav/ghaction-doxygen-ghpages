@@ -1,5 +1,7 @@
 #!/bin/sh -l
 
+set -e
+source /opt/venv/bin/activate
 # $1 is the directory where doxygen should be executed
 working_directory=$1
 # $2 is the path to the Doxyfile relative to the working directory
@@ -11,13 +13,16 @@ if [ ! -d ${working_directory} ]; then
   echo "Path ${working_directory} could not be found!"
   exit 1
 fi
-cd $2
+cd ${working_directory}
+
+echo "Doxygen will be executed in the following directory: ${working_directory}"
+echo "Doxyfile path: ${doxyfile_path}"
 
 if [ ! -f ${doxyfile_path} ]; then
   echo "File ${doxyfile_path} could not be found!"
   exit 1
 fi
 
-doxygen ${doxyfile_path}
+doxygen ${doxyfile_path} > /dev/null
 
 touch ${html_output_folder}/.nojekyll

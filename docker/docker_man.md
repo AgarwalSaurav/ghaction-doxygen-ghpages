@@ -18,7 +18,7 @@ docker run --rm -v <local_dir>:<container_dir> ghcr.io/agarwalsaurav/doxygen-arc
 
 For example:
 ```bash
-docker run --rm -v $(pwd):/work ghcr.io/agarwalsaurav/doxygen-arch:latest /work ./ doc/Doxyfile doc/html
+docker run --rm -v $(pwd):/work ghcr.io/agarwalsaurav/doxygen-arch:latest --workdir /work ./ doc/Doxyfile doc/html
 ```
 
 Arguments | Description
