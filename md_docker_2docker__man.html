@@ -80,7 +80,7 @@ $(function() {
 Usage</h1>
 <p>Pull the image from <code>ghcr.io</code>: </p><div class="fragment"><div class="line">docker pull ghcr.io/agarwalsaurav/doxygen-arch:latest</div>
 </div><!-- fragment --><p>To run the image: </p><div class="fragment"><div class="line">docker run --rm -v &lt;local_dir&gt;:&lt;container_dir&gt; ghcr.io/agarwalsaurav/doxygen-arch:latest --workdir &lt;container_dir&gt; &lt;working-directory&gt; &lt;doxyfile-path&gt; &lt;html-output-dir&gt;</div>
-</div><!-- fragment --><p>For example: </p><div class="fragment"><div class="line">docker run --rm -v $(pwd):/work ghcr.io/agarwalsaurav/doxygen-arch:latest /work ./ doc/Doxyfile doc/html</div>
+</div><!-- fragment --><p>For example: </p><div class="fragment"><div class="line">docker run --rm -v $(pwd):/work ghcr.io/agarwalsaurav/doxygen-arch:latest --workdir /work ./ doc/Doxyfile doc/html</div>
 </div><!-- fragment --><table class="markdownTable">
 <tr class="markdownTableHead">
 <th class="markdownTableHeadNone">Arguments   </th><th class="markdownTableHeadNone">Description    </th></tr>
