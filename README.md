@@ -25,7 +25,7 @@ jobs:
         uses: actions/checkout@v4
       - name: Action Doxygen and GitHub Pages
         id: ghaction
-        uses: AgarwalSaurav/ghaction-doxygen-ghpages@v2.0.0
+        uses: AgarwalSaurav/ghaction-doxygen-ghpages@v2.0.1
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           working-directory: .
