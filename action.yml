@@ -43,7 +43,7 @@ runs:
         docker run --rm
         --workdir ${{ github.workspace }}
         --volume ${{ github.workspace }}:${{ github.workspace }}:rw
-        ghcr.io/agarwalsaurav/doxygen-arch:latest 
+        ghcr.io/agarwalsaurav/doxygen-arch:latest
         "${{ inputs.working-directory }}"
         "${{ inputs.doxyfile-path }}"
         "${{ inputs.html-output-folder }}"
