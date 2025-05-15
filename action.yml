@@ -34,6 +34,10 @@ inputs:
     description: 'Directory on the deployment branch for pushing the build files'
     required: false
 
+  env_list_file:
+    description: 'Provide a file with environment variables to be passed to docker'
+    required: false
+
 runs:
   using: 'composite'
   steps:
@@ -47,11 +51,24 @@ runs:
         "${{ inputs.working-directory }}"
         "${{ inputs.doxyfile-path }}"
         "${{ inputs.html-output-folder }}"
+        --env-file ${{ inputs.env_list_file }}
+
+      run: |
+        DOCKER_ARGS="--rm --workdir ${{ github.workspace }} --volume ${{ github.workspace }}:${{ github.workspace }}:rw"
+        if [ -n "${{ inputs.env_list_file }}" ]; then
+          DOCKER_ARGS="$DOCKER_ARGS --env-file ${{ inputs.env_list_file }}"
+        fi
+        docker run $DOCKER_ARGS \
+          ghcr.io/agarwalsaurav/doxygen-arch:latest \
+          "${{ inputs.working-directory }}" \
+          "${{ inputs.doxyfile-path }}" \
+          "${{ inputs.html-output-folder }}"
+
 
     - name: Deploy to GitHub Pages
-      uses: JamesIves/github-pages-deploy-action@v4.5.0
+      uses: JamesIves/github-pages-deploy-action@v4.7.3
       with:
         token: ${{ inputs.github_token }}
         branch: ${{ inputs.branch }}
-        folder: ${{ inputs.working-directory }}/${{ inputs.html-output-folder }}
+        folder: "${{ inputs.working-directory }}/${{ inputs.html-output-folder }}"
         target-folder: ${{ inputs.target_folder }}

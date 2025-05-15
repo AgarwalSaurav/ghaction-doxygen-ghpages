@@ -32,4 +32,4 @@ Arguments | Description
 
 ## License
 
-This work is under an [MIT license](https://github.com/AgarwalSaurav/ghaction-doxygen-ghpages/blob/main/LICENSE).
+This project is released under the [MIT license](https://github.com/AgarwalSaurav/ghaction-doxygen-ghpages/blob/main/LICENSE).
