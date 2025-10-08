@@ -3,22 +3,27 @@
 The image is based on the archlinux image and contains doxygen and graphviz.
 Additionally, it contains latex for possibly generating PDFs in the future.
 
-The image is available on [ghcr](https://ghcr.io/agarwalsaurav/doxygen-arch:latest).
+The image is available on [Docker Hub](https://hub.docker.com/r/agarwalsaurav/doxygen-arch).
 
 ## Usage
-Pull the image from `ghcr.io`:
+Pull the image from Docker Hub:
 ```bash
-docker pull ghcr.io/agarwalsaurav/doxygen-arch:latest
+docker pull agarwalsaurav/doxygen-arch:latest
 ```
 
 To run the image:
 ```bash
-docker run --rm -v <local_dir>:<container_dir> ghcr.io/agarwalsaurav/doxygen-arch:latest --workdir <container_dir> <working-directory> <doxyfile-path> <html-output-dir>
+docker run --rm --workdir <container_dir> -v <local_dir>:<container_dir> agarwalsaurav/doxygen-arch:latest <working-directory> <doxyfile-path> <html-output-dir>
 ```
 
 For example:
 ```bash
-docker run --rm -v $(pwd):/work ghcr.io/agarwalsaurav/doxygen-arch:latest --workdir /work ./ doc/Doxyfile doc/html
+docker run --rm --workdir /work -v $(pwd):/work agarwalsaurav/doxygen-arch:latest . doc/Doxyfile doc/html
+```
+
+With environment variables:
+```bash
+docker run --rm --workdir /work -v $(pwd):/work --env-file env.list agarwalsaurav/doxygen-arch:latest . doc/Doxyfile doc/html
 ```
 
 Arguments | Description

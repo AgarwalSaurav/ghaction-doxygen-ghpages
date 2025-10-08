@@ -85,7 +85,7 @@ The action will only pass the `--env-file` argument to Docker if the input is se
 
 The Docker image is based on the Arch Linux base image and includes Doxygen, Graphviz, and LaTeX (for future PDF generation).
 It is available at:
-`ghcr.io/agarwalsaurav/doxygen-arch:latest`
+`agarwalsaurav/doxygen-arch:latest`
 
 See the [`docker/`](docker/) directory and its [documentation](docker/docker_man.md) for further details.
 
